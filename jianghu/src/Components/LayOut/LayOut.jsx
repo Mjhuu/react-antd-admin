@@ -55,6 +55,8 @@ class LayOut extends Component {
                     </div>
                     <Layout>
                         <MyHeader
+                            panes={panes}
+                            activeMenu={activeMenu}
                             collapsed={collapsed}
                             onChangeState={this._setState}
                         />

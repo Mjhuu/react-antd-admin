@@ -3,25 +3,27 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 
 import {connect} from "react-redux";
 
+import LoadAbleComponent from './Utils/LoadAbleComponent'
+
 import 'antd/dist/antd.min.css'
 
 import config from './Config'
 
 import LayOut from './Components/LayOut/LayOut'
 
-import Login from './Pages/Login/Login'
-import System from './Pages/System/System'
-import DataAnalyse from './Pages/DataAnalyse/DataAnalyse'
-import UserManage from './Pages/UserManage/UserManage'
-import Project from './Pages/Project/Project'
-import Message from './Pages/Message/Message'
-import Chat from './Pages/Chat/Chat'
 import About from './Pages/About/About'
 
 import PowerRouter from './Pages/PowerManage/router'
 
-import Mine from './Pages/Mine/Mine'
 import Error from './Pages/Error/Error'
+const Login = LoadAbleComponent(import('./Pages/Login/Login'), true);
+const System = LoadAbleComponent(import('./Pages/System/System'), true);
+const Mine = LoadAbleComponent(import('./Pages/Mine/Mine'), true);
+const DataAnalyse = LoadAbleComponent(import('./Pages/DataAnalyse/DataAnalyse'), true);
+const UserManage = LoadAbleComponent(import('./Pages/UserManage/UserManage'), true);
+const Project = LoadAbleComponent(import('./Pages/Project/Project'), true);
+const Message = LoadAbleComponent(import('./Pages/Message/Message'), true);
+const Chat = LoadAbleComponent(import('./Pages/Chat/Chat'), true);
 
 class App extends Component{
     render() {

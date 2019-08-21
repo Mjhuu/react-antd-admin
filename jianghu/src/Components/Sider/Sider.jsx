@@ -52,9 +52,15 @@ class MySider extends Component {
         }
     }
     _initData = (arr, childList, key) =>{
+        if(key === '/layout/mine'){
+            return this.addPane({
+                name: '个人中心',
+                key: '/layout/mine'
+            });
+        }
         arr.forEach(value => {
             if(value.key === key){
-                this.addPane(value);
+                return this.addPane(value);
             }
             if(value.hasOwnProperty(childList)){
                 this._initData(value[childList], childList, key);

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Icon, Layout, Avatar, Badge, Dropdown, Menu, message, Modal} from "antd";
+import {Icon, Layout, Avatar, Badge, Dropdown, Menu, Modal} from "antd";
 import {withRouter} from 'react-router-dom'
 import './css/index.styl'
 

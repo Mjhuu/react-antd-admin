@@ -1,0 +1,265 @@
+.chat-box
+  position: absolute;
+  top: 2rem
+  left: 50%
+  transform translateX(-50%)
+  width: 83rem
+  height: 52rem
+  border: .1rem solid #d1d1d1;
+  background: #fff;
+  border-radius: .5rem
+  box-shadow: 0 0 2rem rgba(0,0,0,.2);
+  >.middle
+    position: relative;
+    width: 100%
+    height calc(100% - 4rem);
+    display flex
+    >div
+      height: 100%
+    >.left
+      width: 23rem
+      overflow-y auto
+      user-select none
+      border-right: .1rem solid #f1f1f1
+      .left-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem
+
+        &:hover {
+          background: #f3f3f3;
+        }
+
+        .left-item-text {
+          flex-grow: 1;
+          overflow: hidden;
+          margin-left: 1rem
+
+          .group-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span:first-child {
+              color: rgba(0, 0, 0, 0.75);
+              font-size: 1.4rem
+              line-height: 1.4rem
+            }
+
+            span:last-child {
+              margin-top: .3rem
+              font-size: 1.2rem
+              color: #abaaab;
+            }
+          }
+
+          .group-message {
+            display: flex;
+            color: #777777;
+            font-size: 1.3rem
+            height: 2.1rem
+            overflow: hidden;
+
+            &:last-child {
+              flex-grow: 1;
+              overflow: hidden;
+            }
+
+            p {
+              margin-bottom: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    >.main
+      width: 43rem
+      border-right: .1rem solid #f1f1f1
+      box-sizing border-box
+      >.content
+        width: 100%
+        height: 32rem
+        margin: 0
+        border-bottom: .1rem solid #f1f1f1
+        box-sizing border-box
+        >.chat-list {
+          height: 100%;
+          overflow: auto;
+          .chat-item {
+            padding: 1.5rem
+
+            .time {
+              margin: 1rem 0;
+              text-align: center;
+              font-size: 1.2rem
+              color: #d0cfcf;
+            }
+
+            .chat-item-info {
+              display: flex;
+              justify-content: flex-start;
+
+              &.chat-right {
+                flex-direction: row-reverse;
+
+                .chat-main {
+                  text-align: right;
+                  margin-right: 1.2rem
+
+                  .username {
+                    color: #9f9f9f;
+                  }
+
+                  .chat-content {
+                    background: #d9f4fe;
+                    text-align: left;
+
+                    &::before{
+                      display: none;
+                    }
+
+                    &::after {
+                      content: '';
+                      position: absolute;
+                      top: .8rem
+                      left: 100%;
+                      width: 0;
+                      height: 0;
+                      border-top: .3rem solid transparent;
+                      border-bottom: .6rem solid transparent;
+                      border-left: .6rem solid #d9f4fe;
+                    }
+                  }
+                }
+              }
+
+              .chat-main {
+                flex-grow: 1;
+                margin-left: 1.2rem
+
+                .username {
+                  color: #a0abca;
+                  font-size: 1.4rem
+                }
+
+                .chat-content {
+                  position: relative;
+                  display: inline-block;
+                  max-width: 80%;
+                  padding: 1.2rem
+                  border-radius: .5rem
+                  background: #f3f3f3;
+                  word-wrap: break-word;
+                  word-break: break-all;
+
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    top: .8rem
+                    right: 100%;
+                    width: 0;
+                    height: 0;
+                    border-top: .3rem solid transparent;
+                    border-bottom: .6rem solid transparent;
+                    border-right: .6rem solid #f3f3f3;
+                  }
+
+                  img {
+                    max-width: 100%;
+                  }
+
+                  p {
+                    margin-bottom: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      >.edit
+        width: 100%
+        height calc(100% - 32rem);
+    >.right
+      width: 17rem
+      user-select none
+      background: #f6f7f9;
+      >.title
+        width: 100%
+        height: 3.2rem
+        line-height: 3.2rem
+        box-sizing border-box
+        padding 0 1rem
+        border-bottom: .1rem solid #c8c8c8
+      >.admin-list
+        width: 100%
+        height calc(100% - 3.2rem);
+        overflow-y auto
+        .user-item {
+          display: flex;
+          align-items: center;
+          color: #787677;
+          font-size: 1.2rem
+          padding: .5rem 1rem
+
+          .avatar-box {
+            position: relative;
+            flex-shrink: 0;
+            width: 2.4rem
+            height: 2.4rem
+            border-radius: 50%;
+            overflow: hidden;
+
+            &.mask {
+              img {
+                opacity: .7;
+              }
+
+              div {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.2);
+              }
+            }
+          }
+        }
+  >.top
+    position: relative;
+    width: 100%
+    height: 4rem
+    cursor move
+    user-select none
+    background-color: #e9e9e9
+    >.middle
+      display flex
+      height: 100%
+      align-items center
+      justify-content center
+      color #67696f
+    >.left
+      position: absolute;
+      left: .4rem
+      top: 0
+      height: 100%
+      >ul
+        height: 100%
+        position: relative;
+        display flex
+        justify-content center
+        align-items center
+        >li
+          position: relative;
+          width: 1.2rem
+          height: 1.2rem
+          margin 0 .4rem 0;
+          border-radius 50%
+        >li.red
+          background-color: #eb6a5d
+        >li.yellow
+          background-color: #f5c250
+        >li.green
+          background-color: #0bd417

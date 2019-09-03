@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
-import {getAdminInfo} from "./../../Store/actionCreators";
-
-import config from './../../Config'
+import {setAdminInfo, initSocket} from "./../../Store/actionCreators";
 
 import {Input, Icon, Button, message} from 'antd';
+import {loginAdmin} from './../../Api/index'
 
 import {check_name, check_pass} from './../../Common/js/FabLabFun'
 
 import './css/index.styl'
+import config from "../../Config";
+import {bindActionCreators} from "redux";
 
+const store = connect(
+    state => ({ adminInfo: state.adminInfo }),
+    dispatch => bindActionCreators({ setAdminInfo, initSocket}, dispatch)
+);
+
+@store
 class Login extends Component {
     constructor(props){
         super(props);
@@ -81,26 +88,25 @@ class Login extends Component {
     }
     async loginAdmin(){
         let {username, password} = this.state;
-        console.log(username, password);
-        message.warning('用户名或密码错误');
-        await this.props.getAdminInfo();
-        config.setCache('token', 'aasd342rg2342edv');
-        /*切换到主界面*/
-        this.props.history.push('/');
-        console.log(this.props.adminInfo);
-    }
-}
-const mapStateToProps = (state)=>{
-    return {
-        adminInfo: state.adminInfo
-    }
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAdminInfo() {
-            const action = getAdminInfo({age: 21, gender: 1});
-            dispatch(action);
+        let data = await loginAdmin({
+            username,
+            password
+        });
+        if(data.code === 200){
+            config.setCache('token', data.token);
+            await this.props.setAdminInfo(data.result);
+            /*初始化socket*/
+            this.props.initSocket({
+                uuid: this.props.adminInfo.admin.uuid,
+                username: this.props.adminInfo.admin.username,
+                headImg: this.props.adminInfo.admin.headImg
+            });
+            /*切换到主界面*/
+            this.props.history.push('/');
+        }else {
+            message.warning(data.data)
         }
     }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+}
+
+export default Login;

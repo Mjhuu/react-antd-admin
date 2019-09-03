@@ -1,7 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a76d870c-0dd5-463b-bb6f-a26331af3f6f" name="Default Changelist" comment="" />
+    <list default="true" id="a76d870c-0dd5-463b-bb6f-a26331af3f6f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Common/images/headImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Common/images/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/AnimatedBook/AnimatedBooks.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/AnimatedBook/style.styl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/Chat/css/index.styl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/Chat/img/administrator.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/PowerManage/css/adminManage.styl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/Project/css/index.styl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/System/component/CpuEchars.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/System/component/InternetEchars.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/System/component/IntranetEchars.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/System/css/index.styl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Utils/loadImages.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/.idea/sever.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Decorator/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Controller/Admin.Controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Controller/Message.Controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Model/Admin.Model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Model/Message.Model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Model/Role.Model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/connection/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/Mysql/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/ajax/ajax.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/ajax/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/allRequest/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/config/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/controller/Ali.Controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/middle_parser/jwt_parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/routes/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/routes/message.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sever/util/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Common/js/FabLabFun.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common/js/FabLabFun.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Content/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Content/Content.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Content/css/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Content/css/index.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Loading/Loading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Loading/Loading.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Loading/css/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Loading/css/index.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Chat/Chat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Chat/Chat.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Error/Error.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Error/Error.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Login/css/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Login/css/index.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/PowerManage/AdminManage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/PowerManage/AdminManage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Project/Project.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Project/Project.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/System/System.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/System/System.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/actionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/actionCreators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,26 +81,34 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1PRcUqDyT3AQk22yKV8suhadPH9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="F:/node学习" />
+    <property name="last_opened_file_path" value="F:/admin-master/admin-master" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="F:\webstorm\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\江湖个人网站\jianghu\src\Api" />
-      <recent name="F:\江湖个人网站\jianghu\src\Common" />
-      <recent name="F:\江湖个人网站\jianghu\src\Pages\Login\css" />
-      <recent name="F:\江湖个人网站\jianghu\public" />
-      <recent name="F:\江湖个人网站\jianghu\src\Pages\Login\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\江湖个人网站\jianghu\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\江湖个人网站\jianghu\src\Common\images" />
+      <recent name="F:\江湖个人网站\jianghu\src\Pages\Chat\img" />
+      <recent name="F:\江湖个人网站\jianghu\src\Components" />
+      <recent name="F:\江湖个人网站\jianghu\src\Api" />
+      <recent name="F:\江湖个人网站\jianghu\src\Common" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -81,10 +148,36 @@
       <workItem from="1565915110808" duration="14525000" />
       <workItem from="1566012223210" duration="10509000" />
       <workItem from="1566084944792" duration="14000" />
+      <workItem from="1566518229604" duration="7090000" />
+      <workItem from="1566563707154" duration="949000" />
+      <workItem from="1566603670327" duration="15559000" />
+      <workItem from="1566686997831" duration="27651000" />
+      <workItem from="1566777538237" duration="5626000" />
+      <workItem from="1566859353546" duration="18681000" />
+      <workItem from="1566951657278" duration="13322000" />
+      <workItem from="1567034626663" duration="25647000" />
+      <workItem from="1567225165265" duration="6055000" />
+      <workItem from="1567251577344" duration="3261000" />
+      <workItem from="1567311838409" duration="3588000" />
+      <workItem from="1567401831873" duration="4378000" />
+      <workItem from="1567468222788" duration="6396000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

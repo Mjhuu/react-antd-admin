@@ -16,7 +16,7 @@ class MyContent extends Component {
                 {
                     panes.length ? (
                         <Tabs
-                            style={{ height: '100%' }}
+                            style={{ height: '40px' }}
                             tabBarStyle={{ background: '#f0f2f5', marginBottom: 0 }}
                             onEdit={this.onEdit}
                             onChange={this.onChange}
@@ -24,11 +24,16 @@ class MyContent extends Component {
                             type="editable-card"
                             hideAdd>
                             {
-                                panes.map(item => (<TabPane style={{height: activeMenu !== item.key ? '0' : '100%', }} key={item.key} tab={item.name} closable={item.closable}>
-                                    <div className='tabpane-box'>
-                                        {this.props.children}
-                                    </div>
-                                </TabPane>))
+                                panes.map(item => {
+                                    return (
+                                            <TabPane style={{height: activeMenu !== item.key ? '0' : '100%', }} key={item.key} tab={item.name} closable={item.closable}>
+                                                <div className='tabpane-box'>
+
+                                                </div>
+                                            </TabPane>
+                                        )
+                                    }
+                                )
                             }
                         </Tabs>
                     ) : (
@@ -37,6 +42,11 @@ class MyContent extends Component {
                         </div>
                     )
                 }
+                <div className="content-box">
+                    <div className="content-inner">
+                        {this.props.children}
+                    </div>
+                </div>
             </Content>
         );
     }

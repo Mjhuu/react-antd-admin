@@ -1,11 +1,11 @@
 export default {
     setCache(key, value){
-        sessionStorage.setItem(key, value)
+        localStorage.setItem(key, value)
     },
     getCache(key){
-        return sessionStorage.getItem(key)
+        return localStorage.getItem(key)
     },
     delCache(key){
-        sessionStorage.removeItem(key)
+        localStorage.removeItem(key)
     }
 }

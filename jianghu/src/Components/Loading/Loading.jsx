@@ -6,7 +6,7 @@ class Loading extends Component {
     render() {
         return (
             <div className="loading-box">
-                Loading ……
+                <i>Loading ……</i>
             </div>
         );
     }

@@ -5,10 +5,14 @@ const MSG_URL = '/api/msg';
 
 //管理员登录
 export const loginAdmin = (data)=> ajax(ADMIN_URL+ '/login', data, 'post');
+//更新token
+export const updateToken = (data)=> ajax(ADMIN_URL+ '/updateToken', data, 'post');
 //获取管理员信息
 export const getAdminInfo = ()=> ajax(ADMIN_URL+ '/getAdminInfo');
 //获取管理员列表
 export const getAdminList = (data)=> ajax(ADMIN_URL+ '/getAdminList', data);
+//获取所有管理员列表
+export const getAllAdminList = ()=> ajax(ADMIN_URL+ '/getAllAdminList');
 //冻结管理员
 export const freezeAdmin = (data)=> ajax(ADMIN_URL+'/freezeAdmin', data, 'post');
 //删除管理员

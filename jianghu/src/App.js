@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux'
-import {getAdminInfo} from "./Api";
+import {getAdminInfo, updateToken} from "./Api";
 import {setAdminInfo, initSocket} from "./Store/actionCreators";
 
 import LoadAbleComponent from './Utils/LoadAbleComponent'
@@ -31,8 +31,8 @@ const Message = LoadAbleComponent(import('./Pages/Message/Message'), true);
 const Chat = LoadAbleComponent(import('./Pages/Chat/Chat'), true);
 
 const store = connect(
-    state => ({ adminInfo: state.adminInfo }),
-    dispatch => bindActionCreators({ setAdminInfo, initSocket}, dispatch)
+    state => ({adminInfo: state.adminInfo}),
+    dispatch => bindActionCreators({setAdminInfo, initSocket}, dispatch)
 );
 
 @store
@@ -75,11 +75,17 @@ class App extends Component {
         if (config.getCache('token')) {
             // 获取管理员信息
             this.getAdminInfo();
-            // 每隔20分钟重新更新token
-            setInterval(()=>{
-                console.log('每隔20分钟重新更新token');
+            // 每隔15分钟重新更新token
+            setInterval(() => {
+                this.updateToken();
+            },  60 * 1000 * 15)
+        }
+    }
 
-            }, 20 * 60 * 1000)
+    async updateToken() {
+        let data = await updateToken();
+        if(data.code === 200){
+            config.setCache('token', data.token);
         }
     }
 

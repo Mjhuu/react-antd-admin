@@ -7,6 +7,20 @@ import uuid from 'uuid'
 import {getIpAndAddress} from "../../allRequest";
 
 class AdminController {
+    /*重新设置token*/
+    updateToken(req, res, next){
+        let oldToken = req.headers.token;
+        let jwt1 = new Jwt(oldToken);
+        let result = jwt1.verifyToken();
+        let uuid = result.adminId;
+        let jwt2 = new Jwt({
+            adminId: uuid
+        });
+        let token = jwt2.generateToken();
+        res.json({
+            code: 200, token, data: 'token更新成功'
+        })
+    }
     /*管理员登录*/
     async adminLogin(req, res, next) {
         let {username, password} = req.body;
@@ -57,7 +71,6 @@ class AdminController {
     /* 冻结管理员 --- 只有超管才可以调用 */
     @superAdmin
     async freezeAdmin(req, res, next){
-        console.log(33);
         res.json({
             code: 200,
             data: '冻结成功'
@@ -106,7 +119,33 @@ class AdminController {
             data: '获取管理员信息成功'
         })
     }
-
+    /*获取所有管理员列表*/
+    async getAllAdminList(req, res, next){
+        let adminList = [];
+        let admins = await Model.Admin.findAndCountAll({
+            attributes: {exclude: ['password', 'id']}
+        }).catch(err => next({msg: '管理员查询失败', res: err}));
+        for (let i = 0; i < admins.rows.length; i++) {
+            let roleInfo = await Model.Role.findOne({
+                where: {
+                    id: admins.rows[i].roleId
+                },
+                attributes: ['roleName', 'power']
+            });
+            adminList.push({
+                adminInfo: admins.rows[i],
+                roleInfo
+            })
+        }
+        res.json({
+            code: 200,
+            data: '获取所有管理员列表成功',
+            result: {
+                count: admins.count,
+                adminList
+            }
+        })
+    }
     /*获取管理员列表*/
     @toNumber({
         type: 'get',

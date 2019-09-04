@@ -7,7 +7,7 @@ import {replaceImg} from "../../Common/js/FabLabFun";
 import {addChat, initChat} from "../../Store/actionCreators";
 import headImg from './../../Common/images/headImg.png'
 import home from './../../Common/images/home.png'
-import {insertChat} from "../../Api";
+import {insertChat, getAllAdminList} from "../../Api";
 // 引入编辑器组件
 import {ContentUtils} from 'braft-utils'
 import BraftEditor from 'braft-editor'
@@ -31,13 +31,14 @@ class Chat extends Component {
         super(props);
         this.state = {
             // 创建一个空的editorState作为初始值
-            editorState: BraftEditor.createEditorState(null)
+            editorState: BraftEditor.createEditorState(null),
+            adminList: []
         };
         this.chatListDom = React.createRef();
     }
 
     render() {
-        let {editorState} = this.state;
+        let {editorState, adminList} = this.state;
         let {chatList, adminInfo, onlineUserList} = this.props;
         const controls = ['emoji', 'italic', 'text-color', 'separator', 'link', 'separator', 'media'];
         // 禁止上传video、audio
@@ -139,20 +140,20 @@ class Chat extends Component {
                     </div>
                     <div className="right">
                         <div className="title">
-                            在线成员 {onlineUserList.length}{/*/12*/}
+                            成员 {onlineUserList.length}/{adminList.length}
                         </div>
                         <div className="admin-list">
                             {
-                                onlineUserList.map(onlineUser => (
-                                    <div key={onlineUser.uuid} className='user-item'>
-                                        <div className={`avatar-box ${true ? '' : 'mask'}`}>
+                                adminList.map(admin => (
+                                    <div key={admin.uuid} className='user-item'>
+                                        <div className={`avatar-box ${admin.online ? '' : 'mask'}`}>
                                             <img style={{width: '100%', height: '100%'}}
-                                                 src={onlineUser.headImg ? onlineUser.headImg : headImg} alt="头像"/>
+                                                 src={admin.headImg ? admin.headImg : headImg} alt="头像"/>
                                             <div/>
                                         </div>
                                         <div className='ellipsis'
-                                             style={{flexGrow: 1, margin: '0 3px 0 5px'}}>{onlineUser.username}</div>
-                                        <div style={{display: onlineUser.power === 0 ? 'block' : 'none'}}><img
+                                             style={{flexGrow: 1, margin: '0 3px 0 5px'}}>{admin.username}</div>
+                                        <div style={{display: admin.power === 0 ? 'block' : 'none'}}><img
                                             width={18} height={20} src={require('./img/administrator.png')} alt=""/>
                                         </div>
                                     </div>
@@ -168,11 +169,16 @@ class Chat extends Component {
         if(prevProps.chatList.length !== this.props.chatList.length){
             this.chatListDom.current.scrollTop = this.chatListDom.current.scrollHeight;
         }
+        if (this.props.onlineUserList !== prevProps.onlineUserList) {
+            this.handleAdminList()
+        }
     }
 
     componentDidMount() {
         this.chatListDom.current.scrollTop = this.chatListDom.current.scrollHeight;
         this.props.initChat();
+        // 获取所有管理员列表
+        this.getAllAdminList();
         // 2. 监听
         this.props.socket && this.props.socket.on('msg', async (data) => {
             data = JSON.parse(data);
@@ -192,13 +198,57 @@ class Chat extends Component {
             }
         });
     }
+    //处理管理员列表
+    handleAdminList(){
+        let {adminList} = this.state;
+        let {onlineUserList} = this.props;
+        let list1 = [];
+        let list2 = [];
+        let list3 = [];
+        for(let admin of adminList){
+            const isHave = onlineUserList.find(i => i.uuid === admin.uuid);
+            if (admin.power === 0) {
+                admin.online = true;
+                list1.push(admin)
+            } else if (!!isHave) {
+                admin.online = true;
+                list2.push(admin)
+            } else {
+                admin.online = false;
+                list3.push(admin)
+            }
+        }
+        this.setState({
+            adminList: [...list1, ...list2, ...list3]
+        })
+    }
+    //获取所有管理员列表
+    async getAllAdminList(){
+        let data = await getAllAdminList();
+        if(data.code === 200){
+            let adminList = [];
+            data.result.adminList.forEach(value => {
+                adminList.push({
+                    uuid: value.adminInfo.uuid,
+                    username: value.adminInfo.username,
+                    headImg: value.adminInfo.headImg,
+                    power: value.roleInfo.power,
+                    online: false
+                })
+            });
+            await this.setState({
+                adminList
+            });
+            this.handleAdminList();
+        }
+    }
 
     //处理时间
     handleTime = (time, small) => {
         if (!time) {
             return ''
         }
-        const HHmm = moment(time).format('HH:mm')
+        const HHmm = moment(time).format('HH:mm');
         //不在同一年，就算时间差一秒都要显示完整时间
         if (moment().format('YYYY') !== moment(time).format('YYYY')) {
             return moment(time).format('YYYY-MM-DD HH:mm:ss')

@@ -2,64 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a76d870c-0dd5-463b-bb6f-a26331af3f6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Common/images/headImg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Common/images/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/AnimatedBook/AnimatedBooks.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/AnimatedBook/style.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/Chat/css/index.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/Chat/img/administrator.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/PowerManage/css/adminManage.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/Project/css/index.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/System/component/CpuEchars.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/System/component/InternetEchars.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/System/component/IntranetEchars.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/System/css/index.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/loadImages.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/.idea/sever.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Decorator/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Controller/Admin.Controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Controller/Message.Controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Model/Admin.Model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Model/Message.Model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/Model/Role.Model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/connection/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/Mysql/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/ajax/ajax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/ajax/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/allRequest/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/config/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/controller/Ali.Controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/middle_parser/jwt_parser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/routes/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/routes/message.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sever/util/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/ajax.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Common/js/FabLabFun.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common/js/FabLabFun.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Content/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Content/Content.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Content/css/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Content/css/index.styl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Loading/Loading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Loading/Loading.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Loading/css/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Loading/css/index.styl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Chat/Chat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Chat/Chat.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Error/Error.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Error/Error.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Login/css/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Login/css/index.styl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/PowerManage/AdminManage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/PowerManage/AdminManage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Project/Project.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Project/Project.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/System/System.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/System/System.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Store/actionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/actionCreators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Store/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Store/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/sagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/PowerManage/css/adminManage.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/PowerManage/css/adminManage.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sever/Mysql/Controller/Admin.Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sever/Mysql/Controller/Admin.Controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sever/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sever/routes/admin.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +41,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="F:/admin-master/admin-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sever" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -160,8 +110,19 @@
       <workItem from="1567251577344" duration="3261000" />
       <workItem from="1567311838409" duration="3588000" />
       <workItem from="1567401831873" duration="4378000" />
-      <workItem from="1567468222788" duration="6396000" />
+      <workItem from="1567468222788" duration="7173000" />
+      <workItem from="1567504431779" duration="6901000" />
+      <workItem from="1567554331056" duration="7427000" />
+      <workItem from="1567565190669" duration="223000" />
     </task>
+    <task id="LOCAL-00001" summary="1.新增聊天室&#10;2.优化代码&#10;3.修复各种bug">
+      <created>1567474788355</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1567474788355</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,5 +140,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.新增聊天室&#10;2.优化代码&#10;3.修复各种bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.新增聊天室&#10;2.优化代码&#10;3.修复各种bug" />
   </component>
 </project>

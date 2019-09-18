@@ -10,21 +10,31 @@ export const menu = [
         key: '/layout/power',
         children: [
             {
-                name: '角色管理',
+                name: '级别管理',
                 icon: '',
                 key: '/layout/power/role_manage',
             },
             {
-                name: '管理员管理',
+                name: '技术人员管理',
                 icon: '',
                 key: '/layout/power/admin_manage',
             }
         ]
     },
     {
-        name: '用户管理',
-        icon: 'user',
-        key: '/layout/user_manage'
+        name: '写文章',
+        icon: 'form',
+        key: '/layout/edit'
+    },
+    {
+        name: '技术社区',
+        icon: 'cluster',
+        key: '/layout/technology'
+    },
+    {
+        name: '软件社区',
+        icon: 'appstore',
+        key: '/layout/software'
     },
     {
         name: '作品集',
@@ -32,7 +42,7 @@ export const menu = [
         key: '/layout/project'
     },
     {
-        name: '留言板',
+        name: '提议区',
         icon: 'message',
         key: '/layout/message'
     },

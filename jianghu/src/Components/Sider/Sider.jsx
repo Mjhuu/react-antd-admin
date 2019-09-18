@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
-import {Icon, Menu} from "antd";
+import {Icon, Menu, Badge} from "antd";
 import {menu} from './menu'
 
 import {withRouter} from 'react-router-dom'
-
+import {connect} from "react-redux";
 import './css/index.styl'
 
-@withRouter
+const store = connect(
+    state => ({
+        joinChatRoomList: state.joinChatRoomList
+    }),
+    null
+);
+
+@store @withRouter
 class MySider extends Component {
     constructor(props){
         super(props);
@@ -55,7 +62,13 @@ class MySider extends Component {
         if(key === '/layout/mine'){
             return this.addPane({
                 name: '个人中心',
-                key: '/layout/mine'
+                key
+            });
+        }
+        if(key === '/layout/power/role_manage/departmentManage' || key === '/layout/power/role_manage/titleManage'){
+            return this.addPane({
+                name: '级别管理',
+                key: '/layout/power/role_manage'
             });
         }
         arr.forEach(value => {
@@ -71,12 +84,21 @@ class MySider extends Component {
      * 生成侧边栏菜单
      */
     renderMenu = (menu) => {
+        let {joinChatRoomList} = this.props;
+        let noAllReadCount = 0;
+        joinChatRoomList.forEach(v=>{
+            noAllReadCount += v.noReadMsgCount
+        });
         if (Array.isArray(menu)) {
             return menu.map(item => {
                 if (!item.children || !item.children.length) {
                     return (
                         <Menu.Item key={item.key || item.name}>
-                            <div onClick={() => this.addPane(item)}>{item.icon && <Icon type={item.icon} />}<span>{item.name}</span></div>
+                            <div onClick={() => this.addPane(item)}>
+                                {item.icon && <Icon type={item.icon} />}<span>{item.name}</span> {
+                                item.key === '/layout/chat' && <Badge dot count={noAllReadCount} />
+                            }
+                            </div>
                         </Menu.Item>
                     )
                 } else {

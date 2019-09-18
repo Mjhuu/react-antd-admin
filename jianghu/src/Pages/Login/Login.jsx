@@ -23,7 +23,8 @@ class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            loading: false
         }
     }
     get loginComputed(){
@@ -31,7 +32,7 @@ class Login extends Component {
         return check_name(username) && check_pass(password)
     }
     render() {
-        let {username, password} = this.state;
+        let {username, password, loading} = this.state;
         return (
             <div className="login-box">
                 <div className="login">
@@ -57,7 +58,7 @@ class Login extends Component {
                         />
                         {/* eslint-disable-next-line no-script-url,jsx-a11y/anchor-is-valid */}
                         <a href="#">忘记密码？联系超级管理员。</a>
-                        <Button disabled={!this.loginComputed} onClick={()=> this.loginAdmin()} style={{marginTop: '1rem'}} block type="primary">登录</Button>
+                        <Button loading={loading} disabled={!this.loginComputed} onClick={()=> this.loginAdmin()} style={{marginTop: '1rem'}} block type="primary">登录</Button>
                     </div>
                 </div>
             </div>
@@ -88,9 +89,15 @@ class Login extends Component {
     }
     async loginAdmin(){
         let {username, password} = this.state;
+        await this.setState({
+            loading: true
+        });
         let data = await loginAdmin({
             username,
             password
+        });
+        await this.setState({
+            loading: false
         });
         if(data.code === 200){
             config.setCache('token', data.token);

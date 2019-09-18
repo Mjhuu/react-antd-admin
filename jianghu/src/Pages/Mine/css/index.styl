@@ -1,0 +1,142 @@
+.mine-box
+  width: 100%
+  border-radius .5rem
+  padding: 1rem
+  >.bottom
+    width: 100%
+    margin-top: 2rem
+    display flex
+    >.left
+      flex 7
+      border-radius .8rem
+      box-shadow 0 0 .6rem #ccc
+      overflow hidden
+      section
+        padding 0 1.5rem 1.5rem 1.5rem
+    >.right
+      flex 3
+      max-width: 22rem
+      margin-left: 2rem
+      min-width: 22rem
+      >.history
+        width: 100%
+        height: 10rem
+        border-radius .8rem
+        box-shadow 0 0 .6rem #ccc
+        overflow hidden
+        display flex
+        padding-top: 1rem
+        justify-content center
+        align-items: center
+        flex-direction column
+        >img
+          width: 4.2rem
+          height: 4.2rem
+  >.top
+    position: relative;
+    width: 100%
+    border-radius .8rem
+    box-shadow 0 0 1rem #ccc
+    overflow hidden
+    >.cover
+      width: 100%
+      height: 24rem
+      >button
+        position: absolute;
+        right: 1rem
+        top: 1rem
+        font-size: 1.2rem
+        color: hsla(0,0%,100%,.7);
+        background-color: transparent
+        >input
+          position: absolute
+          width: 100%
+          height: 100%
+          cursor pointer
+          top: 0
+          left: 0
+          opacity 0
+    >.bottom
+      position: relative;
+      width: 100%
+      min-height: 12rem
+      padding-bottom: 1rem
+      padding-right: 2rem
+      >button
+        position: absolute;
+        bottom: 1rem
+        right: 1rem
+        font-size: 1.2rem
+      >.userInfo
+        display inline-block
+        position: relative
+        margin-left: 19rem
+        padding-top: 1rem
+        >.username
+          display inline-block
+          font-weight: 700;
+          font-size: 2rem
+          margin-right: 2rem
+          vertical-align: middle;
+          >img
+            width: 2rem
+            height: 2rem
+            margin-right: 1rem
+        >.signContent
+          margin-top: .6rem
+      >.headImg
+        position: absolute;
+        width: 15rem
+        height: 15rem
+        padding: .4rem
+        border-radius: .8rem
+        background: #fff;
+        top: -5rem
+        left: 2rem
+        overflow: hidden;
+        >.update-headImg
+          position: absolute;
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          display flex
+          align-items center
+          justify-content center
+          flex-direction column
+          background-color: rgba(0,0,0, .4)
+          color #fff
+          font-size: 1.5rem
+          transition all .3s
+          opacity: 0
+          >input
+            position: absolute;
+            top: 0
+            left: 0
+            opacity 0
+            width: 100%
+            height: 100%
+            cursor pointer
+        >.update-headImg:hover
+          opacity: 1;
+        >img
+          width: 100%
+          height: 100%
+          object-fit cover
+.revise-pwd
+  position: relative;
+  >li
+    position: relative;
+    margin-bottom: .5rem
+    >.top
+      line-height: 3rem
+    >.top:before
+      content: "*";
+      display: inline-block;
+      margin-right: .4rem
+      line-height: 1;
+      font-family: SimSun;
+      font-size: 1.2rem
+      color: #ed4014;
+    >.bottom
+      max-width 40rem

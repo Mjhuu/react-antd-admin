@@ -1,8 +1,48 @@
 import Model from "./../main";
-import sequelize from 'sequelize'
+import Sequelize from 'sequelize'
 import Jwt from "../../jwt";
+const Op = Sequelize.Op;
+import {getAdminId} from "../../allRequest";
+import {toNumber} from "../../Decorator";
 
 class MessageController {
+    // 批量标记已读消息
+    @toNumber({
+        type: 'post',
+        dealValue: ['chatRoomId']
+    })
+    async flagReadMoreMsg(req, res, next){
+        let {chatRoomId} = req.body;
+        let adminId = await getAdminId(req, res, next);
+        let isReadMsgIds = await Model.ReadMessage.findAll({
+            where:{
+                adminId, chatRoomId
+            }
+        });
+        let isReadMsgIdList = [];
+        isReadMsgIds.forEach(readMsg =>{
+           isReadMsgIdList.push(readMsg.messageId)
+        });
+        let allMs = await Model.Message.findAll({
+           where: {
+               id: {
+                   [Op.notIn]: isReadMsgIdList
+               },
+               chatRoomId
+           }
+        });
+        let newReadMsgList = [];
+        allMs.forEach(msg =>{
+            newReadMsgList.push({
+                adminId, chatRoomId, messageId: msg.id
+            })
+        });
+        let bulkReadMsg = await Model.ReadMessage.bulkCreate(newReadMsgList);
+        res.json({
+            code: 200,
+            data: '此聊天室所有消息已标记已读'
+        })
+    }
     // 获取全部聊天记录
     async getAllMessages(req, res, next) {
         let messageList = [];
@@ -28,19 +68,21 @@ class MessageController {
         })
     }
     // 添加新增聊天记录
+    @toNumber({
+        type: 'post',
+        dealValue: ['chatRoomId']
+    })
     async addChat(req, res, next){
-        let {msg} = req.body;
-        let token = req.headers.token;
-        let jwt = new Jwt(token);
-        let result = jwt.verifyToken();
-        let uuid = result.adminId;
-        let admin = await Model.Admin.findOne({
-            where: {uuid}
-        }).catch(err => next({res: err, msg: '获取管理员信息失败'}));
+        let {msg, chatRoomId} = req.body;
+        let adminId = await getAdminId(req, res, next);
         let newChat = await Model.Message.build({
-            msg, adminId: admin.id, createTime: new Date()
+            msg, adminId, createTime: new Date(), chatRoomId
         });
-        let data = await newChat.save();
+        newChat = await newChat.save();
+        //将自己的消息标记已读
+        let readMsg = await Model.ReadMessage.create({
+           adminId, chatRoomId, messageId: newChat.id
+        });
         res.json({
            code: 200,
            data: '消息发送成功'

@@ -12,7 +12,7 @@ let Admin = sequelize.define('admin', {
             allowNull: false,
             unique: true
         },
-        // 账号状态 1-正常 2-冻结或违规
+        // 账号状态 1-正常 2-冻结或违规 3-删除
         status: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -47,6 +47,9 @@ let Admin = sequelize.define('admin', {
             type: Sequelize.DATE,
         },
         ipAddress: {
+            type: Sequelize.TEXT,
+        },
+        backgroundImg: {
             type: Sequelize.TEXT,
         }
     }

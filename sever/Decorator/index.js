@@ -20,10 +20,12 @@ export function toNumber({type, dealValue}) {
                 })
             }
             dealValue.forEach(value => {
-                if(isToNumber(req[kind][value])){
-                    req[kind][value] = Number(req[kind][value])
-                }else {
-                    throw new Error(`${value}为"${typeof req[kind][value]}"类型，不能转成数字`)
+                if(req[kind][value] && req[kind][value] !== 'undefined'){
+                    if(isToNumber(req[kind][value])){
+                        req[kind][value] = Number(req[kind][value])
+                    }else {
+                        throw new Error(`${value}为"${typeof req[kind][value]}"类型，不能转成数字`)
+                    }
                 }
             });
             return oldMethods.apply(this, arguments)
@@ -40,10 +42,10 @@ export function superAdmin (target, key, descriptor) {
         let result = jwt.verifyToken();
         let uuid = result.adminId;
         // 查询管理员信息
-        let admin = await Model.Admin.findOne({where: {uuid}}).catch(err => next({res: err, msg: '获取管理员信息失败'}));
+        let admin = await Model.Admin.findOne({where: {uuid}}).catch(err => next({res: err, msg: '获取技术人员信息失败'}));
         let roleInfo = await Model.Role.findByPk(admin.roleId);
         if(roleInfo.power !== 0){
-            return res.send({code: 500, data: '只有超管才能操作！'});
+            return res.send({code: 500, data: '暂无权限！'});
         }
         return oldMethods.apply(this, arguments)
     };

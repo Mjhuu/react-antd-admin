@@ -100,9 +100,7 @@ const io = socketIO(server);
 // 3. 建立连接
 let onlineUsers = new Map();
 // 当前在线列表
-let onlineList = {
-    room1: []
-};
+let onlineList = {};
 // 返回消息类型
 let socketType = {
     systemType: 0,
@@ -120,59 +118,78 @@ function unique(arr) {
         return total
     }, [])
 }
+function setOnlineInfo(id, data, socket){
+    if (!onlineUsers.has(id)) {
+        onlineUsers.set(id, new Map())
+    }
+    if(!onlineList.hasOwnProperty(id)){
+        onlineList[id] = []
+    }
+    data.uuid = data.uuid !== undefined ? data.uuid : socket.uuid;
+    data.username = data.username !== undefined ? data.username : socket.username;
+    data.headImg = data.headImg !== undefined ? data.headImg : socket.headImg;
+    data.power = data.power !== undefined ? data.power : socket.power;
+    onlineList[id].push({
+        uuid: data.uuid,
+        username: data.username,
+        headImg: data.headImg,
+        power: data.power
+    });
+    onlineList[id] = unique(onlineList[id]);
+    onlineUsers.get(id).set(data.uuid, data);
+    onlineUsers.get(id).get(data.uuid).socket = socket;
+}
 
 io.on('connection', (socket) => {
     console.log('已有用户成功链接socket!');
     socket.on('online', (data) => {
         data = JSON.parse(data);
-        // 加入房间，没有则创建，有则直接使用
-        if (!onlineUsers.has('room1')) {
-            onlineUsers.set('room1', new Map())
-        }
+        /*去重*/
+        data.joinChatRooms = [...new Set(data.joinChatRooms)];
+        data.joinChatRooms.forEach(id =>{
+            setOnlineInfo(id, data, socket);
+        });
         socket.uuid = data.uuid;
         socket.username = data.username;
         socket.headImg = data.headImg;
         socket.power = data.power;
-        // 将上线用户添加到数组
-        onlineList['room1'].push({
-            uuid: data.uuid,
-            username: data.username,
-            headImg: data.headImg,
-            power: data.power
-        });
-        onlineUsers.get('room1').set(data.uuid, data);
-        onlineUsers.get('room1').get(data.uuid).socket = socket;
-        // 通知房间所有人有用户上线
+        socket.joinChatRooms = data.joinChatRooms;
+
+        // 通知加入的房间内的所有人有用户上线
         sayAll({
             type: socketType.onlineUsersType,
             result: {
                 msg: '上线',
-                onlineUsers: unique(onlineList['room1']),
-                onlineUsersCount: onlineUsers.get('room1').size
+                onlineUsers: onlineList,
+                kind: 1,//上线
+                currentUser: socket.uuid
             }
-        }, socket, 1);
+        }, socket, 5, 1);
     });
     //监听用户退出
     socket.on('disconnect', () => {
         console.log('有人退出');
-        let newOnlineList = [];
-        // 删除在线用户
-        onlineUsers.get('room1').delete(socket.uuid);
-        onlineList['room1'].forEach(value => {
-            if(value.uuid !== socket.uuid){
-                newOnlineList.push(value)
-            }
-        });
-        onlineList['room1'] = newOnlineList;
-        // 通知房间所有人有用户上线
+        // 删除退出用户-所有聊天室
+        for(let room of onlineUsers){
+            let newOnlineList = [];
+            onlineUsers.get(room[0]).delete(socket.uuid);
+            onlineList[room[0]].forEach(value => {
+                if(value.uuid !== socket.uuid){
+                    newOnlineList.push(value)
+                }
+            });
+            onlineList[room[0]] = newOnlineList;
+        }
+        // 通知房间所有人有用户退出
         sayAll({
             type: socketType.onlineUsersType,
             result: {
                 msg: '有人退出',
-                onlineUsers: unique(onlineList['room1']),
-                onlineUsersCount: onlineUsers.get('room1').size
+                onlineUsers: onlineList,
+                kind: 0, //退出、下线
+                currentUser: socket.uuid
             }
-        }, socket, 1);
+        }, socket, 5, 1);
     });
     // 3.1 返回消息
     socket.emit('msg', JSON.stringify({
@@ -192,15 +209,54 @@ io.on('connection', (socket) => {
                 power: socket.power,
                 createTime: Date.now(),
                 msg: data.msg,
+                chatRoomId: data.chatRoomId
             },
             type: socketType.msgType
-        }, socket, 1);
+        }, socket, data.chatRoomId, 1);
+    });
+    // 3.3 接收到有新房间创建
+    socket.on('addChatRoom', data =>{
+        data = JSON.parse(data);
+        let chatRoomId = data.chatRoomId;
+        // 将新房间、用户 添加到onlineUsers 和 onlineList
+        setOnlineInfo(chatRoomId, data, socket);
+        socket.joinChatRooms = [...socket.joinChatRooms, chatRoomId];
+        // 通知创建的房间内的所有人有新房间创建
+        sayAll({
+            type: socketType.onlineUsersType,
+            result: {
+                msg: '创建了新房间',
+                onlineUsers: onlineList,
+                kind: 3,//创建了新房间
+                currentUser: socket.uuid
+            }
+        }, socket, chatRoomId, 1);
+    });
+    /**
+     *  3.4 接收到有人主动搜索加入到房间
+     * 将此用户添加到 onlineUsers 和 onlineList对应的房间号内， 并且通知此房间所有人有人加入
+     */
+    socket.on('joinChatRoom', data =>{
+        data = JSON.parse(data);
+        let chatRoomId = data.chatRoomId;
+        // 将用户添加到此房间
+        setOnlineInfo(chatRoomId, data, socket);
+        // 通知创建的房间内的所有人有新房间创建
+        sayAll({
+            type: socketType.onlineUsersType,
+            result: {
+                msg: '有人加入了房间',
+                onlineUsers: onlineList,
+                kind: 3,//创建了新房间
+                currentUser: socket.uuid
+            }
+        }, socket, chatRoomId, 1);
     });
 });
 
-function sayAll(data, socket, type = 0) { // 0代表除了自己所有人接收 1 代表自己也接收
+function sayAll(data, socket, roomId, type = 0) { // 0代表除了自己所有人接收 1 代表自己也接收
     for (let room of onlineUsers) {
-        if (room[0] === 'room1') {
+        if (room[0] === roomId) {
             for (let user of room[1]) {
                 if (type === 1) {
                     user[1].socket.emit('msg', JSON.stringify(data));

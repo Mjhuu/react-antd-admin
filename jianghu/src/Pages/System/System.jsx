@@ -10,6 +10,7 @@ import InternetEchars from './component/InternetEchars'
 import IntranetEchars from './component/IntranetEchars'
 
 import './css/index.styl'
+import {inject_unount} from "../../Utils/decorator";
 
 const { RangePicker } = DatePicker;
 
@@ -18,6 +19,7 @@ function disabledDate(current) {
     return current && current > moment().endOf('day');
 }
 
+@inject_unount
 class System extends Component {
     constructor(props) {
         let StartTime = new Date();

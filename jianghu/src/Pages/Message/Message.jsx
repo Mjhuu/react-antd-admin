@@ -4,7 +4,7 @@ class Message extends Component {
     render() {
         return (
             <div>
-                我是留言板
+                我是提议区
             </div>
         );
     }

@@ -25,10 +25,12 @@ const Login = LoadAbleComponent(import('./Pages/Login/Login'), true);
 const System = LoadAbleComponent(import('./Pages/System/System'), true);
 const Mine = LoadAbleComponent(import('./Pages/Mine/Mine'), true);
 const DataAnalyse = LoadAbleComponent(import('./Pages/DataAnalyse/DataAnalyse'), true);
-const UserManage = LoadAbleComponent(import('./Pages/UserManage/UserManage'), true);
+const Technology = LoadAbleComponent(import('./Pages/Technology/Technology'), true);
 const Project = LoadAbleComponent(import('./Pages/Project/Project'), true);
+const Software = LoadAbleComponent(import('./Pages/Software/Software'), true);
 const Message = LoadAbleComponent(import('./Pages/Message/Message'), true);
 const Chat = LoadAbleComponent(import('./Pages/Chat/Chat'), true);
+const Edit = LoadAbleComponent(import('./Pages/Edit/Edit'), true);
 
 const store = connect(
     state => ({adminInfo: state.adminInfo}),
@@ -46,7 +48,9 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/layout" component={System}/>
                     <Route path="/layout/data_analyse" component={DataAnalyse}/>
-                    <Route path="/layout/user_manage" component={UserManage}/>
+                    <Route path="/layout/edit" component={Edit}/>
+                    <Route path="/layout/software" component={Software}/>
+                    <Route path="/layout/technology" component={Technology}/>
                     <Route path="/layout/project" component={Project}/>
                     <Route path="/layout/message" component={Message}/>
                     <Route path="/layout/chat" component={Chat}/>

@@ -5,13 +5,24 @@ import MySider from './../Sider/Sider'
 import MyContent from './../Content/Content'
 
 import {withRouter} from 'react-router-dom'
+//音效
+import msgAudio from './../../Common/audio/msgAudio.mp3'
+import onlineAudio from './../../Common/audio/onlineAudio.mp3'
 
 import { Layout } from 'antd';
 import './css/index.styl'
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {resetMsgAudio, resetOnlineAudio} from "../../Store/actionCreators";
 
 const { Sider } = Layout;
 
-@withRouter
+const store = connect(
+    state => ({msgAudioPlayState: state.msgAudioPlayState, onlineAudioPlayState: state.onlineAudioPlayState}),
+    dispatch => bindActionCreators({resetMsgAudio, resetOnlineAudio}, dispatch)
+);
+
+@store @withRouter
 class LayOut extends Component {
     constructor(props){
         super(props);
@@ -25,7 +36,9 @@ class LayOut extends Component {
                 }
             ], //打开的标签页列表
             activeMenu: '/layout',  //活动的菜单
-        }
+            msgAudio: null,
+            onlineAudio: null
+        };
     }
     render() {
         let {collapsed, panes, activeMenu} = this.state;
@@ -69,9 +82,20 @@ class LayOut extends Component {
                         </MyContent>
                     </Layout>
                 </Layout>
+                {/*上线音效*/}
+                <audio onCanPlay={(e) => this.canPlay(e, 'msgAudio')} src={msgAudio} />
+                {/*消息音效*/}
+                <audio onCanPlay={(e) => this.canPlay(e, 'onlineAudio')} src={onlineAudio} />
             </div>
         );
     }
+
+    canPlay = (e, type) =>{
+        this.setState({
+            [type]: e.target
+        });
+    };
+
     _setState = async (obj) => {
         await this.setState(obj);
     };
@@ -81,6 +105,37 @@ class LayOut extends Component {
         });
         this.props.history.replace('/layout');
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        let {msgAudio, onlineAudio} = this.state;
+        if(prevProps.onlineAudioPlayState !== this.props.onlineAudioPlayState){
+            if(this.props.onlineAudioPlayState){
+                // console.log('播放上线音乐');
+                if(onlineAudio){
+                    onlineAudio.play();
+                    onlineAudio.addEventListener('ended', ()=>{
+                        this.props.resetOnlineAudio();
+                    })
+                }else {
+                    this.props.resetOnlineAudio();
+                }
+            }
+        }
+        if(prevProps.msgAudioPlayState !== this.props.msgAudioPlayState){
+            if(this.props.msgAudioPlayState){
+                // console.log('播放消息音乐');
+                if(msgAudio){
+                    msgAudio.play();
+                    msgAudio.addEventListener('ended', ()=>{
+                        this.props.resetMsgAudio();
+                    })
+                }else {
+                    this.props.resetMsgAudio();
+                }
+            }
+        }
+    }
+
     componentDidMount() {
 
     }

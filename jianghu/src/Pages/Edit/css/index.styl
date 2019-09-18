@@ -1,0 +1,95 @@
+.edit-box
+  position: relative;
+  >.publish
+    position: fixed;
+    right: 5rem
+    bottom: 5rem
+    width: 6rem
+    height: 6rem
+    border-radius 50%
+    overflow: hidden;
+    box-shadow 0 0 1rem #ccc
+    background-color: #22ddc0
+    color #fff
+    display flex
+    align-items center
+    justify-content center
+    z-index 1
+    cursor pointer
+    transition all .3s
+    &:hover
+      box-shadow 0 0 1rem #22ddc0
+    >svg
+      width: 50%
+      height: 50%
+  >.top
+    position: relative;
+    width: 100%
+    height: 5rem
+    margin-bottom: .5rem
+    background-color: seagreen
+    >.save
+      position: absolute;
+      right: 2rem
+      top: 0
+    >input
+      width: 100%
+      height: 100%
+      padding: 0 16rem 0 2rem
+      line-height: 5rem
+      font-size: 2.5rem
+      border: none
+
+.publish-article-box
+  width: 100%
+
+  > li
+    width: 100%
+    position relative
+    line-height: 4rem
+    display flex
+
+    > .left
+      flex 3
+      min-width 10rem
+      max-width 10rem
+      position: relative;
+      display flex
+      align-items center
+      padding-right: 1rem
+      justify-content flex-end
+
+    > .right
+      flex 7
+      position: relative;
+
+      > input[type='file']
+        position: absolute;
+        top: 0
+        left: 0
+        cursor pointer
+        width: 10rem
+        height: 10rem
+        border-radius 50%
+        overflow: hidden;
+        opacity 0
+
+      > .icon
+        width: 10rem
+        height: 10rem
+        margin-bottom: 1rem
+        border-radius 50%
+        overflow: hidden;
+        border: .1rem solid #ccc
+        display flex
+        justify-content center
+        align-items center
+
+        > svg
+          width: 60%
+          height: 60%
+
+        > img
+          width: 100%
+          height: 100%
+          object-fit cover

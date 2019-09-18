@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'mjhu';
+  src:  url('fonts/mjhu.eot?qkvkm7');
+  src:  url('fonts/mjhu.eot?qkvkm7#iefix') format('embedded-opentype'),
+    url('fonts/mjhu.ttf?qkvkm7') format('truetype'),
+    url('fonts/mjhu.woff?qkvkm7') format('woff'),
+    url('fonts/mjhu.svg?qkvkm7#mjhu') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="mjhu-"], [class*=" mjhu-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'mjhu' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mjhu-2:before {
+  content: "\e900";
+}
+.mjhu-1:before {
+  content: "\e901";
+}
+.mjhu-uniE902:before {
+  content: "\e902";
+}

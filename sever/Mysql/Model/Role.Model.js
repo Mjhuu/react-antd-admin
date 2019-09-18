@@ -7,10 +7,15 @@ let Role = sequelize.define('role', {
             allowNull: false,
             unique: true
         },
-        power: { // 权限 0-超级管理员 1-普通管理员
+        rolePower: {
+            type: Sequelize.STRING(20),
+            allowNull: false,
+            unique: true
+        },
+        power: { // 权限 0-P10 P9 1-P8 P7 2-P6 P5 3-P4 P3 4-P2 P1
             type: Sequelize.INTEGER,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: 4
         }
     }
 );

@@ -42,6 +42,25 @@ body {
   line-height: 1;
   font-size: 1.6rem;
 }
+h1{
+  font-size: 3.2rem
+}
+h2{
+  font-size: 2.4rem
+}
+h3{
+  font-size: 1.872rem
+}
+h4{
+  font-size: 1.6rem
+}
+h5{
+  font-size: 1.328rem
+}
+h6{
+  font-size: 1.2rem
+}
+
 ol, ul {
   list-style: none;
 }
@@ -67,4 +86,57 @@ input{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+pre {
+  display: block;
+  padding: 1rem;
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  line-height: 1.42857143;
+  color: #abb2bf;
+  background: #282c34;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: auto;
+  border-radius: .5rem;
+}
+h1,h2,h3,h4,h5,h6{
+  margin-top: 1rem;
+  /* margin-bottom: 1em; */
+}
+strong {
+  font-weight: bold;
+}
+
+p > code:not([class]) {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: .4rem;
+}
+img{
+  /* 图片居中 */
+  margin: 0 auto;
+  display: flex;
+}
+
+#content {
+  font-size: 1.6rem;
+  line-height: 3rem
+}
+
+#content .desc ul,#content .desc ol {
+  color: #333333;
+  margin: 1.5rem 0 0 2.5rem;
+}
+
+#content .desc h1, #content .desc h2 {
+  border-bottom: .1rem solid #eee;
+  padding-bottom: 1rem;
+}
+
+#content .desc a {
+  color: #009a61;
 }

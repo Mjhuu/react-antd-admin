@@ -2,13 +2,28 @@ import React, {Component} from 'react';
 import {Icon, Layout, Avatar, Badge, Dropdown, Menu, Modal} from "antd";
 import {withRouter} from 'react-router-dom'
 import './css/index.styl'
+import screenfull from "screenfull";
+import {connect} from "react-redux";
+import HeadImg from './../../Common/images/headImg.png'
+import config from "../../Config";
 
 const {Header} = Layout;
 const { confirm } = Modal;
 
-@withRouter
+const store = connect(
+    state => ({
+        adminInfo: state.adminInfo,
+    }),
+    null
+);
+
+@store @withRouter
 class MyHeader extends Component {
+    state = {
+        isFullscreen: false, //控制全屏
+    };
     render() {
+        let {adminInfo} = this.props;
         return (
             <Header
                 style={{background: '#fff', padding: 0, position: 'relative', overflow: 'hidden', userSelect: 'none'}}>
@@ -21,11 +36,10 @@ class MyHeader extends Component {
                     <li>
                         <Dropdown overlay={() =>this.initMenu()}>
                             <div>
-                                <Badge count={1}>
-                                    <Avatar style={{border: '.1rem solid #f1f1f1'}} size={40} icon="user"/>
+                                <Badge count={0}>
+                                    <Avatar src={adminInfo.admin && adminInfo.admin.headImg ? adminInfo.admin.headImg : HeadImg} style={{border: '.1rem solid #f1f1f1'}} size={40} icon="user"/>
                                 </Badge>
-                                <span style={{paddingLeft: '.6rem'}}>
-                                超级管理员
+                                <span style={{paddingLeft: '.6rem'}}>{adminInfo.admin && adminInfo.admin.username}
                             </span>
                             </div>
                         </Dropdown>
@@ -36,16 +50,25 @@ class MyHeader extends Component {
     }
 
     initMenu(){
+        let {isFullscreen} = this.state;
         return (
             <Menu onClick={(e) =>this.handleMenuClick(e)}>
-                <Menu.Item key="/layout/mine">
-                    <Icon type="user"/>
-                    个人中心
-                </Menu.Item>
-                <Menu.Item key="loginOut">
-                    <Icon type="export" />
-                    退出登录
-                </Menu.Item>
+                <Menu.ItemGroup title="用户中心">
+                    <Menu.Item key="/layout/mine">
+                        <Icon type="user"/>
+                        个人中心
+                    </Menu.Item>
+                    <Menu.Item key="loginOut">
+                        <Icon type="logout" />
+                        退出登录
+                    </Menu.Item>
+                </Menu.ItemGroup>
+                <Menu.ItemGroup title="设置中心">
+                    <Menu.Item key="isFullscreen">
+                        <Icon type={isFullscreen ? 'fullscreen-exit' : 'fullscreen'} />
+                        切换全屏
+                    </Menu.Item>
+                </Menu.ItemGroup>
             </Menu>
         )
     }
@@ -70,10 +93,23 @@ class MyHeader extends Component {
             case 'loginOut':
                 this.loginOut();
                 break;
+            case 'isFullscreen':
+                this.toggleFullscreen();
+                break;
             default:
                 break
         }
     }
+    //切换全屏
+    toggleFullscreen = () => {
+        if (screenfull.enabled) {
+            screenfull.toggle().then(() => {
+                this.setState({
+                    isFullscreen: screenfull.isFullscreen
+                })
+            });
+        }
+    };
 
     /*退出登录*/
     loginOut(){
@@ -83,9 +119,9 @@ class MyHeader extends Component {
             okText: '退出',
             cancelText: '取消',
             onOk() {
-                alert(2)
-            },
-            onCancel() {},
+                config.delCache('token');
+                window.location.href = '/login'
+            }
         });
     }
 

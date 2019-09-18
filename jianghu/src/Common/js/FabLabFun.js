@@ -8,6 +8,23 @@ export function check_email(val) {
 }
 
 /**
+ * 检查网址
+ * @param val
+ * @returns {boolean}
+ */
+export function check_url(val) {
+  return (/^((ht|f)tps?):\/\/([\w-]+(\.[\w-]+)*\/?)+(\?([\w\-.,@?^=%&:/~+#]*)+)?$/.test(val));
+}
+
+/**
+ * 去空格
+ * @param v
+ * @returns {*}
+ */
+export function trim(v) {
+  return v.replace(/^\s*|\s*$/g, "")
+}
+/**
  * 检查密码【6-16位由数字字母符号至少两种组成】
  * @param val
  * @returns {boolean}
@@ -367,4 +384,17 @@ export function replaceImg(str){
     str = str.replace(/<img(.*?)>/g, "[图片]")
   }
   return str
+}
+
+/**
+ * 将html转成text
+ * @param content
+ * @returns {string}
+ */
+export function dealHtml(content) {
+  let div = document.createElement("div");
+  div.innerHTML = content;
+  let output = div.innerText || div.textContent;
+  div = null;
+  return output;
 }

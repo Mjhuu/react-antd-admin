@@ -9,6 +9,10 @@ let Message = sequelize.define('message', {
         createTime: {
             type: Sequelize.DATE,
             allowNull: false
+        },
+        adminId: {
+            type: Sequelize.INTEGER,
+            allowNull: false
         }
     }
 );
